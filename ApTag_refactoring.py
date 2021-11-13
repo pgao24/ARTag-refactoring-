@@ -20,6 +20,12 @@ This program can be shortened and optimized. We have to make it more efficient.
 Many variables are declared in this program, which takes memory spaces.
 
 '''
+'''
+Possible changes:
+1. check to see if we can decrease the amount of conditions or cases that need to be checked. 
+2. eliminate variables used in the program
+3. use other ways to find out where the center of robot is located
+'''
 from __future__ import division
 from __future__ import print_function
 from rdt_localization.msg import Pose
