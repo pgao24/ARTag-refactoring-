@@ -14,7 +14,12 @@ TODO:
 - Debug issue where orientation jumps around
 - Figure out which way x and y are relative to the arena walls
 """
+'''
+Some codse are commented, so we assume they are subjects to change. 
+This program can be shortened and optimized. We have to make it more efficient. 
+Many variables are declared in this program, which takes memory spaces.
 
+'''
 from __future__ import division
 from __future__ import print_function
 from rdt_localization.msg import Pose
@@ -128,7 +133,7 @@ def center_position(position, rotation_matrix, id):
     default_angle = math.radians(45)
     meter_length_adjustment = 1.01
 '''
-Math chekced. However, the y_position here is calculated by adding position[2] and the y-length calcuated , 
+Math chekced. The y_position here is calculated by adding position[2] and the y-length calcuated , 
 we assume that position[2] is intially the z-axos since it is 3-dimensional. hwile we are considering horizontal rotation. 
 In this case, it is represented as x and y in 2-dimensional. 
 '''
@@ -166,7 +171,9 @@ In this case, it is represented as x and y in 2-dimensional.
         y_position = position[2] + diagonal_length * math.sin(total_angle)
 
     return [numpy.float(x_position * meter_length_adjustment), numpy.float(y_position * meter_length_adjustment)]
-
+'''
+Float is used here. Compare to Gaurang who used integer instead. 
+'''
 
 '''
 Takes the stored_pose list and finds the index of the smallest angle in the list.
@@ -262,6 +269,8 @@ def main():
     # turtle.speed(5)
     # turtle.turtlesize(2, 2, 1)
 
+    # Used openCV pacakge to detect april tag
+
     # Set value for camera
     cap = cv2.VideoCapture(0)
 
@@ -270,7 +279,10 @@ def main():
     cv2.namedWindow(window)
 
     detector = apriltag.Detector()
-
+    '''
+    This program used many loops and if-else. The postive side is that many cases are checked and verified. Additionally, this code gives user 
+    feedback when errors are encountered.
+    '''
     # Apriltag detection loop
     while not rospy.is_shutdown():
         # Stores values of each detected tag for final output
