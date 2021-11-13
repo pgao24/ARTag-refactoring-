@@ -127,7 +127,11 @@ def center_position(position, rotation_matrix, id):
     diagonal_length = 0.33234
     default_angle = math.radians(45)
     meter_length_adjustment = 1.01
-
+'''
+Math chekced. However, the y_position here is calculated by adding position[2] and the y-length calcuated , 
+we assume that position[2] is intially the z-axos since it is 3-dimensional. hwile we are considering horizontal rotation. 
+In this case, it is represented as x and y in 2-dimensional. 
+'''
     # Right Tag
     if id == 5 or id == 2:
         total_angle = math.pi - default_angle - relative_orientation
